@@ -1,33 +1,33 @@
 ---
 id: docusaurus-deploy
 slug: /docusaurus-deploy
-title: docusaurus-deploy
+title: deploy
 authors: kuizuo
 ---
 
+I used [Vercel](https://vercel.com/) before , which did not require any configuration. So I only needed to focus on outputting content. This is the article I deployed using Vercel at that time [Vercel deployment personal blog](https://kuizuo.cn/blog/vercel-deploy-blog)
 
+But now,`vercel.app` due to DNS pollution, that is, blocked, it is inaccessible in China. Although it is possible to access it by using your own domain name to resolve to Vercel, being blocked means that the resolution speed of domestic DNS will inevitably decrease, resulting in a decrease in site access speed.
 
-但如今，`vercel.app` 被 DNS 污染，即被墙了，导致国内无法访问，虽然使用有自己的域名解析到 Vercel 上也可能访问，但被墙了，也就意味着国内 DNS 的解析速度必然有所下降，导致站点访问速度有所下降。
+In addition, I wanted to have a better visitor experience, so I decided to use different domestic and foreign analysis methods to speed up access.
 
-加上我想有更好的访客体验，于是我决定采用国内国外不同的解析方式来加快访问。
-
-首先在线路类型中，分别针对境内和境外做了不同的记录值，境内使用国内的 CDN 服务，而境外就使用 Vercel。
+First, in the line type, different record values ​​are made for domestic and overseas. Domestic CDN services are used in China, while Vercel is used overseas.
 
 ![image-20221204161431863](https://img.kuizuo.cn/image-20221204161431863.png)
 
-这样我国内访问就是访问国内的 CDN，访问国外访问就是 Vercel 的 CDN，这样针对不同的地区的网络都能有一个不错的访问速度，可以到 [Ping.cn:网站测速-ping 检测](https://www.ping.cn/) 中测试测试你的站点访问速度如何。
+In this way, my domestic access is to access the domestic CDN, and my foreign access is to access Vercel's CDN. In this way, the networks in different regions can have a good access speed. You can go to [Ping.cn: Website Speed ​​Test-ping Detection](https://www.ping.cn/) to test the access speed of your site.
 
-以下是我的网站测速结果，也可通过访问 [kuizuo.cn 在全国各地区网络速度测试情况-Ping.cn](https://www.ping.cn/http/kuizuo.cn) 在线查看
+The following are the results of my website speed test. You can also visit [kuizuo.cn to check the network speed test results in various regions across the country - Ping.cn](https://www.ping.cn/http/kuizuo.cn) online
 
 ![image-20221204161146327](https://img.kuizuo.cn/image-20221204161146327.png)
 
-果然，花钱了就是不一样。
+Sure enough, it’s different when you spend money.
 
-## 持续集成
+## Continuous integration
 
-由于 Vercel 能够自动拉取仓库代码，并自行构建部署，因此通常什么配置都不需要。
+Since Vercel can automatically pull repository code and build and deploy it by itself, usually no configuration is required.
 
-由于代码提交到代码仓库(github)，则需要借用 CI 服务来帮助我们完成这些任务，这里我使用了 [Github Action](https://github.com/marketplace) 来帮助我构建，构建记录可以在 [Actions · kuizuo/blog](https://github.com/kuizuo/blog/actions) 中查看。以下是我的配置文件
+Since the code is submitted to the code repository (github), we need to use CI services to help us complete these tasks. Here I use [Github Action](https://github.com/marketplace) to help me build, the build log can be found at [Actions · kuizuo/blog](https://github.com/kuizuo/blog/actions) The following is my configuration file
 
 ```yaml title='.github/workflows/ci.yml' icon='logos:github-actions'
 name: CI
@@ -76,12 +76,12 @@ jobs:
           TARGET: '/opt/1panel/apps/openresty/openresty/www/sites/kuizuo.cn/index'
 ```
 
-等待 CI 将最终构建的产物通过 rsync 放到自己的服务器上，便完成了整套部署的流程。
+Waiting for CI to put the final build product on its own server via rsync completes the entire deployment process.
 
-当一切都配置好了之后，我只需要将代码推送到远程仓库上，Github Action 与 Vercel 分别完成它们所该做的任务。等待片刻，再次访问站点，刚刚提交的代码就成功生效了。
+When everything is configured, I just need to push the code to the remote repository, and Github Action and Vercel will complete their respective tasks. After waiting for a while, visit the site again, and the code just submitted will take effect successfully.
 
-## 没有域名和服务器该怎么部署？
+## How to deploy without domain name and server？
 
-当然了上述只是我的配置方案，有许多伙伴可能没有自己的域名或者自己的服务器，就想着白嫖，那么这里目前我只能推荐 [Netlify](https://www.netlify.com/)，然后通过 netlify 的二级域名如 kuizuo-blog.netlify.app 来进行访问。
+Of course, the above is just my configuration plan. Many partners may not have their own domain name or their own server, so they just want to get something for free. So here I can only recommend [Netlify](https://www.netlify.com/), and then access it through Netlify's second-level domain name such as `kuizuo-blog.netlify.app`.
 
-我个人还是非常建议去弄一个属于自己的域名，通过 Vercel 的自定义域名就可以访问。并且由于自己的域名解析的不是大陆的服务器（Vercel 的服务器就不是国内大陆的），因此无需备案这一更繁琐的步骤。
+I personally recommend getting your own domain name, which can be accessed through Vercel's custom domain name. And because your own domain name is not resolved to a server in mainland China (Vercel's server is not in mainland China), there is no need to file a record, which is a more cumbersome step.

@@ -5,23 +5,23 @@ title: Search
 authors: kuizuo
 ---
 
-> [搜索 | Docusaurus](https://docusaurus.io/zh-CN/docs/search)
+> [Search | Docusaurus](https://docusaurus.io/docs/search)
 
 ## [algolia](https://www.algolia.com/)
 
-有两种方案来配置 algolia。
+There are two options for configuring Algolia.
 
-1. 让 Docsearch（准确来说是 [Algolia Crawler](https://crawler.algolia.com/)） 每周一次爬取你的网站（也可自行爬取），**前提是项目开源，否则收费**，好处是无需额外配置，申请比较繁琐（本博客目前采用的方式）
+1. Let Docsearch (more precisely, [Algolia Crawler](https://crawler.algolia.com/) ) crawl your website once a week (you can also crawl it yourself), provided that the project is open source, otherwise it is charged . The advantage is that no additional configuration is required, and the application is more cumbersome (this blog currently uses this method)
 
-2. 自己运行 DocSearch 爬虫，可以随时爬取，但需要自行去注册账号和搭建爬虫环境，或者使用 Github Actions 来帮我们爬取。
+2. You can run the DocSearch crawler yourself and crawl at any time, but you need to register an account and build the crawler environment yourself, or use Github Actions to help us crawl.
 
-### 方案1
+### Solution
 
-关于申请 Algolia DocSearch 在文档中有详细介绍，主要是要申请麻烦，需要等待邮箱，并且还需要回复内容给对方进行确认。所以免费托管的 DocSearch 条件是，比较苛刻的，但申请完几乎是一劳永逸，也是我非常推荐的。如果申请成功后就可以在 [Crawler Admin Console](https://crawler.algolia.com/admin/crawlers) 中查看
+The application for Algolia DocSearch is described in detail in the document. The application is troublesome, you need to wait for the email, and you need to reply to the other party for confirmation. So the conditions for free hosted DocSearch are relatively demanding, but once you apply, it is almost a one-time solution, and I highly recommend it. If the application is successful, you can view it in [Crawler Admin Console](https://crawler.algolia.com/admin/crawlers)
 
 ![image-20220627232545640](https://img.kuizuo.cn/image-20220627232545640.png)
 
-然后将得到 algolia 的 appId，apiKey，indexName 填写到 `docusaurus.config.ts` 中即可。
+Then fill in the appId, apiKey, and indexName of algolia `docusaurus.config.ts` .
 
 ```javascript title='docusaurus.config.ts'
 algolia: {
@@ -31,23 +31,23 @@ algolia: {
 }
 ```
 
-爬取完毕后还会定时发送到你邮箱
+After the crawl is completed, it will be sent to your email regularly
 
 ![image-20230219144035031](https://img.kuizuo.cn/image-20230219144035031.png)
 
-### 方案2
+### Solution
 
 [Run your own | DocSearch (algolia.com)](https://docsearch.algolia.com/docs/run-your-own)
 
-因为方案1是真的难申请，极大概率会失败，无奈只能采用方案2。
+Because Option 1 is really difficult to apply for and has a high probability of failure, I have no choice but to adopt Option 2.
 
-首先去申请 [Algolia](https://www.algolia.com/) 账号，然后在左侧 indices 创建索引，在 API Keys 中获取 Application ID 和 API Key（注意，有两个 API KEY）
+First, apply for an [Algolia](https://www.algolia.com/) account, then create an index in the indices on the left, and get the Application ID and API Key in API Keys (note that there are two API KEYs)
 
 ![image-20210821230135749](https://img.kuizuo.cn/image-20210821230135749.png)
 
 ![image-20210821230232837](https://img.kuizuo.cn/image-20210821230232837.png)
 
-填入到 `docusaurus.config.ts` 中的 API KEY 是 **Search-Only API Key**
+The API KEY entered `docusaurus.config.ts` in is the **Search-Only API Key**
 
 ```js
 themeConfig: {
@@ -59,21 +59,21 @@ themeConfig: {
 }
 ```
 
-系统我选用的是 Linux，在 Docker 的环境下运行爬虫代码。不过要先 [安装 jq](https://github.com/stedolan/jq/wiki/Installation#zero-install) 我这里选择的是 0install 进行安装（安装可能稍慢），具体可以查看文档，然后在控制台查看安装结果
+I chose Linux as the system and ran the crawler code in a Docker environment. [Install jq](https://github.com/stedolan/jq/wiki/Installation#zero-install) `choose()` install for installation (the installation may be a little slow). You can check the documentation for details, and then check the installation results in the console.
 
 ```
 [root@kzserver kuizuo.cn]# jq --version
 jq-1.6
 ```
 
-接着在任意目录中创建 `.env` 文件，填入对应的 APPID 和 API KEY（这里是`Admin API Key`，当时我还一直以为是 Search API Key 坑了我半天 😭）
+Then create a file in any directory `.env` and fill in the corresponding APPID and API KEY (here is`Admin API Key`, I always thought it was the Search API Key at the time and it tricked me for a long time 😭)
 
 ```js
 APPLICATION_ID = YOUR_APP_ID
 API_KEY = YOUR_API_KEY
 ```
 
-然后创建 `docsearch.json` 文件到项目目录下，其内容可以参考如下（将高亮部分替换成你的网站）
+Then create `docsearch.json` a file in the project directory, the content of which can be referred to as follows (replace the highlighted part with your website)
 
 ```json title='docsearch.json' {2-4}
 {
@@ -134,17 +134,17 @@ API_KEY = YOUR_API_KEY
 }
 ```
 
-运行 docker 命令
+Run the docker command
 
 ```bash
 docker run -it --env-file=.env -e "CONFIG=$(cat docsearch.json | jq -r tostring)" algolia/docsearch-scraper
 ```
 
-接着等待容器运行，爬取你的网站即可。最终打开 algolia 控制台提示如下页面则表示成功
+Then wait for the container to run and crawl your website. Finally, open the algolia console and the following page will appear, indicating success
 
 ![image-20210821225934002](https://img.kuizuo.cn/image-20210821225934002.png)
 
-因为要确保项目成功部署后才触发，如果采用 vercel 部署可以按照如下触发条件。
+Because we need to ensure that the project is successfully deployed before triggering, if vercel deployment is used, the trigger conditions can be as follows.
 
 ```yaml title='.github/workflows/docsearch.yml'
 name: docsearch
@@ -174,16 +174,16 @@ jobs:
             algolia/docsearch-scraper
 ```
 
-添加 [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) 到你的 Github 仓库中，提交代码便可触发爬虫规则。
+Add [secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository) to your Github repository and submit code to trigger the crawler rules.
 
 ## [orama](https://docs.oramasearch.com/open-source/plugins/plugin-docusaurus)
 
-配置 algolia 的过程有稍许的复杂，这里你可以在 docusaurus 中集成 [orama](https://docs.oramasearch.com/open-source/plugins/plugin-docusaurus)，这是一个在浏览器、服务器和边缘运行全文、矢量和混合搜索查询服务。最终实现的效果如图所示
+The process of configuring Algolia is a little bit complicated. Here you can integrate [orama](https://docs.oramasearch.com/open-source/plugins/plugin-docusaurus)，in Docusaurus , which is a full-text, vector and hybrid search query service running in the browser, server and edge. The final effect is shown in the figure
 
 ![](https://img.kuizuo.cn/2024/0118082834-202401180828818.png)
 
-## 本地搜索
+## Local search
 
-如果你嫌 algolia 申请比较麻烦，docusaurus 也提供本地搜索，不过搜索上肯定会比全文搜索来的差一些。
+If you think the Algolia application is too troublesome, Docusaurus also provides local search, but the search is definitely worse than the full-text search.
 
-本地搜索插件：[docusaurus-search-local](https://github.com/cmfcmf/docusaurus-search-local)
+Local Search Plugins：[docusaurus-search-local](https://github.com/cmfcmf/docusaurus-search-local)

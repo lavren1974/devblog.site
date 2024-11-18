@@ -18,7 +18,6 @@ const sidebars: SidebarsConfig = {
         'skill/docusaurus/docusaurus-search',
         'skill/docusaurus/docusaurus-comment',
         'skill/docusaurus/docusaurus-deploy',
-        'skill/docusaurus/docusaurus-guides',
       ],
     },
     {

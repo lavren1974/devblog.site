@@ -1,25 +1,28 @@
 ---
 id: docusaurus-style
 slug: /docusaurus-style
-title: docusaurus-style
+title: Styles and Pages
 authors: kuizuo
 ---
 
-## [样式和布局](https://docusaurus.io/zh-CN/docs/styling-layout#styling-your-site-with-infima)
+## [Style and layout](https://docusaurus.io/zh-CN/docs/styling-layout#styling-your-site-with-infima)
 
-Docusaurus 网站是一个 React 单页应用。 你可以像一般的 React 应用一样给网站提供样式，像 [tailwindcss](https://tailwindcss.com/) 与组件库都是支持的。不过引入这些会带来一定的代码体积，因此在这套主题中我所使用的都是全局样式与 css 模块。
+Docusaurus is a React single-page application. You can style the website like a normal React application, such as [tailwindcss](https://tailwindcss.com/) and component libraries. However, introducing these will increase the code size, so in this theme I use global styles and css modules.
 
-## 修改主题色
+## Change theme color
 
-可以在 [这里](https://docusaurus.io/zh-CN/docs/styling-layout#styling-your-site-with-infima) 设置主色调与背景色来查看浅色与深色模式下的效果，例如我的主题色是 <font color="#12AFFA">#12AFFA</font>
+You can set the main color and background color [here](https://docusaurus.io/zh-CN/docs/styling-layout#styling-your-site-with-infima) to see the effect in light and dark modes. For example, my theme color is `#12AFFA`
 
-`@docusaurus/preset-classic` 用 [Infima](https://infima.dev/) 作为底层样式框架。 Infima 提供了灵活的布局，以及常见的 UI 组件样式，适用于以内容为中心的网站（博客、文档、首页）。想要了解更多详情，请查看 [Infima 网站](https://infima.dev/)。
+`@docusaurus/preset-classic` Use [Infima](https://infima.dev/) as the underlying style framework. Infima provides flexible layouts and common UI component styles suitable for content-centric websites (blogs, documents, homepages). For more details, please check out [the Infima website](https://infima.dev/)。
 
-## 主页
+## Home
 
-因为设置了[仅博客模式](https://docusaurus.io/zh-CN/docs/blog#blog-only-mode)，没有专门编写的首页，而是将博文列表设置为首页。需要将 `src/pages/index.tsx` 文件给删除（或者改个名），否则会导致首页路径冲突。当然你也可以专门搞一个主页，就像 docusaurus 那样，然后跳转至博文列表页。
+[Because the blog-only mode](https://docusaurus.io/docs/blog#blog-only-mode)，is set , there is no dedicated homepage, but the blog list is set as the homepage. You need to `src/pages/index.tsx` delete the file (or rename it), otherwise it will cause a homepage path conflict. Of course, you can also make a dedicated homepage, like docusaurus, and then jump to the blog list page.
 
-所以博客页面，也就是首页。但仅仅只有博客是远远不够的，所以便添加了 Hero 组件，也就是首次访问博客的样子。
+So the blog page is the homepage. But just the blog is not enough, so the Hero component is added, which is what the first visit to the blog looks like.
 
-主页右侧 SVG 背景文件地址: `src/components/Hero/img/hero_main.svg`, 插画来源于 [unDraw](https://undraw.co/illustrations)，在这个网站可以找到这类插画风格的背景。或者你可以找专门设计插画的人为你设计。
+The SVG background file address on the right side of the homepage is: `src/components/Hero/img/hero_main.svg`, the illustration comes from [unDraw](https://undraw.co/illustrations), you can find this kind of illustration style background on this website. Or you can find someone who specializes in illustration design to design it for you.
 
+## Custom pages
+
+`Archive`, `Friends`, `Navigation`, `Projects` and `About` me pages src/pagesare defined in the directory, and the corresponding routes are mapped according to the file name. For page creation, see [Create a page | Docusaurus](https://docusaurus.io/zh-CN/docs/creating-pages)
