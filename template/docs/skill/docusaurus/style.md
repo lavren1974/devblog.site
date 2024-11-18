@@ -1,7 +1,7 @@
 ---
 id: docusaurus-style
 slug: /docusaurus-style
-title: 样式与页面
+title: docusaurus-style
 authors: kuizuo
 ---
 
@@ -23,6 +23,3 @@ Docusaurus 网站是一个 React 单页应用。 你可以像一般的 React 应
 
 主页右侧 SVG 背景文件地址: `src/components/Hero/img/hero_main.svg`, 插画来源于 [unDraw](https://undraw.co/illustrations)，在这个网站可以找到这类插画风格的背景。或者你可以找专门设计插画的人为你设计。
 
-## 自定义页面
-
-[归档](/blog/archive)、[友链](/friends)、[导航](/resources)、[项目](/project)以及[关于我](/about)页面都在 `src/pages` 目录下定义，根据文件名映射对应路由。页面的创建可以查看 [创建页面 | Docusaurus](https://docusaurus.io/zh-CN/docs/creating-pages)

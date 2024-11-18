@@ -1,7 +1,7 @@
 ---
 id: docusaurus-search
 slug: /docusaurus-search
-title: 搜索
+title: docusaurus-search
 authors: kuizuo
 ---
 

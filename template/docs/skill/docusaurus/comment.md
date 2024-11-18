@@ -1,7 +1,7 @@
 ---
 id: docusaurus-comment
 slug: /docusaurus-comment
-title: 评论服务
+title: docusaurus-comment
 authors: kuizuo
 ---
 
