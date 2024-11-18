@@ -1,11 +1,11 @@
 ---
 id: docusaurus-plugin
 slug: /docusaurus-plugin
-title: docusaurus-plugin
+title: Plugins
 authors: kuizuo
 ---
 
-在 `docusaurus.config.ts` 下的 plugins，可以看到所有插件以及插件配置。如下所示
+Under `docusaurus.config.ts` plugins, you can see all plugins and plugin configurations.
 
 ```typescript title='docusaurus.config.ts' icon='logos:docusaurus'
 plugins: [
@@ -32,7 +32,7 @@ plugins: [
         editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
           `https://github.com/kuizuo/blog/edit/main/${blogDirPath}/${blogPath}`,
         editLocalizedFiles: false,
-        blogDescription: '代码人生：编织技术与生活的博客之旅',
+        blogDescription: 'blog Description',
         blogSidebarCount: 10,
         blogSidebarTitle: 'Blogs',
         postsPerPage: 10,
@@ -51,27 +51,28 @@ plugins: [
 
 ## [plugin-image-zoom](https://github.com/flexanalytics/plugin-image-zoom)
 
-适用于 Docusaurus 的图像缩放插件。
+Image resizing plugin for Docusaurus.
 
 ## plugin-sass
 
-支持 sass 预处理器
+Support sass preprocessor
 
 ## plugin-baidu-tongji
 
-使站点支持 [百度统计](https://tongji.baidu.com/web/welcome/login) ，这样你就能看到你的站点访客主要都在看哪些页面，以及行为记录，如下图所示。![image-20221204153015256](https://img.kuizuo.cn/image-20221204153015256.png)
+Enable the site to support [Baidu Statistics](https://tongji.baidu.com/web/welcome/login) ，so that you can see which pages your site visitors are mainly viewing and their behavior records, as shown in the figure below.
+![image-20221204153015256](https://img.kuizuo.cn/image-20221204153015256.png)
 
-同时还在 [Footer](https://github.com/kuizuo/blog/blob/main/src/theme/Footer/index.tsx#L3) 中添加了 [@vercel/analytics](https://github.com/vercel/analytics) 前提是需要本项目部署于 Vercel 上。
+At the same time [Footer](https://github.com/kuizuo/blog/blob/main/src/theme/Footer/index.tsx#L3) Added [@vercel/analytics](https://github.com/vercel/analytics) The prerequisite is that this project needs to be deployed on Vercel.
 
 ## [plugin-pwa](https://docusaurus.io/zh-CN/docs/api/plugins/@docusaurus/plugin-pwa)
 
-创建支持离线模式和应用安装的 PWA 文档站点，就像下图这样。
+Create a PWA documentation site that supports offline mode and app installation, like the one below.
 
 ![image-20221204153401244](https://img.kuizuo.cn/image-20221204153401244.png)
 
 ## plugin-content-blog
 
-由于官方的 [plugin-content-blog](https://docusaurus.io/zh-CN/docs/api/plugins/@docusaurus/plugin-content-blog) 插件没有将有关博客的数据设置为全局，所以只能在博客列表页面 `BlogListPage` 组件中获取到，而由于本博客的某些组件需要使用到部分数据，因此这里对 `plugin-content-blog` 进行魔改，将 blog 信息添加至全局数据中，可在任意页面中都访问到所有博文的信息。
+Since the official [plugin-content-blog](https://docusaurus.io/zh-CN/docs/api/plugins/@docusaurus/plugin-content-blog) plug-in does not set the blog data as global, it can only `BlogListPage` be obtained in the component of the blog list page. Since some components of this blog need to use some data, we will `plugin-content-blog` modify it here and add the blog information to the global data. All blog information can be accessed on any page.
 
 ```typescript title='src/plugin/plugin-content-blog.ts'
 async function blogPluginEnhanced(context, options) {
@@ -97,6 +98,8 @@ async function blogPluginEnhanced(context, options) {
 }
 ```
 
-:::warning 这些数据可能会占据一定的空间，[点我](https://github.com/facebook/docusaurus/pull/7163#issuecomment-1096780257)查看详情 。
+:::warning 
+
+These data may take up some space. [Click me](https://github.com/facebook/docusaurus/pull/7163#issuecomment-1096780257) check the details.
 
 :::

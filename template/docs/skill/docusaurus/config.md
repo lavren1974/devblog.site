@@ -1,19 +1,19 @@
 ---
 id: docusaurus-config
 slug: /docusaurus-config
-title: docusaurus-config
+title: Configuration Files
 authors: kuizuo
 ---
 
 ## docusaurus.config.ts
 
-`docusaurus.config.ts` 位于你的网站的根目录，包含了你的站点的配置信息。
+`docusaurus.config.ts` Located in the root directory of your website, contains configuration information for your site.
 
-在这里可以修改 logo，站点名(title)，作者名，顶部的公告(announcementBar)，导航栏(navbar)，底部导航(footer)等等。
+Here you can modify the logo, site name (title), author name, top announcement (announcementBar), navigation bar (navbar), bottom navigation (footer) and so on.
 
 ```typescript title='docusaurus.config.ts' icon='logos:docusaurus'
 const config: Config = {
-  title: '愧怍的小站',
+  title: 'title',
   url: 'https://kuizuo.cn',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
@@ -24,7 +24,7 @@ const config: Config = {
     metadata: [
       {
         name: 'keywords',
-        content: '愧怍, kuizuo, blog, javascript, typescript, node, react, vue, web, 前端, 后端',
+        content: 'kuizuo, blog, javascript, typescript, node, react, vue, web',
       },
     ],
     // ...
@@ -33,46 +33,47 @@ const config: Config = {
 export default config
 ```
 
-同时绝大部分的配置信息都可以放在这里，例如搜索(algolia)，评论(giscus)，社交链接(socials)等等。这些配置都可以通过docusaurus内置的hook(useThemeConfig、useDocusaurusContext)来获取。
+At the same time, most of the configuration information can be placed here, such as search (algolia), comments (giscus), social links (socials), etc. These configurations can be obtained through docusaurus' built-in hooks (useThemeConfig, useDocusaurusContext).
 
-完整的配置信息说明 [docusaurus.config.ts | Docusaurus](https://docusaurus.io/zh-CN/docs/api/docusaurus-config)
+Complete configuration information description [docusaurus.config.ts | Docusaurus](https://docusaurus.io/docs/api/docusaurus-config)
 
 ## sidebars.js
 
-用于配置文档的侧边栏，例如本博客中的[技术笔记](/docs/skill/)，[工具推荐](/docs/basics/)。侧边栏对应的每一项都是一个 markdown 文件，同时这些文件都存放在 docs 目录下，方便管理。
+[A sidebar for configuring documents, such as technical notes](/docs/skill/) and [tool recommendations](/docs/basics/)。in this blog . Each item in the sidebar is a markdown file, and these files are stored in the docs directory for easy management.
 
-[侧边栏 | Docusaurus](https://docusaurus.io/zh-CN/docs/sidebar)
+[Sidebar | Docusaurus](https://docusaurus.io/docs/sidebar)
 
-## 相关信息
+## Related information
 
-### 基本信息
+### Basic information
 
-站点名和作者名只需要搜索 **愧怍** 或 **kuizuo** 便能找到关键位置，将其更改为你的便可。
+You only need to search for **Shame** or **kuizuo** to find the key locations of the site name and author name , and then change them to yours.
 
-### 关于我 页面
+### About me page
 
-具体可在 `src/pages/about.mdx` 中查看与修改。
+The details can `src/pages/about.mdx` be viewed and modified in .
 
-这里你可能需要展示你的技术栈，这里我推荐使用 [skillicons](https://skillicons.dev/) 来生成技术栈的图标，就如下面这样
+Here you may need to show your technology stack. Here I recommend using [skillicons](https://skillicons.dev/) to generate icons for your technology stack, as shown below.
 
 [![My Skills](https://skillicons.dev/icons?i=ts,nodejs,vue,nuxt,react,nextjs,tailwind,nestjs,prisma,postgres,redis,supabase,rust,wasm,vscode)](https://skillicons.dev)
 
-而 github 的状态信息使用[GitHub Profile Summary Cards](https://github-profile-summary-cards.vercel.app/demo.html) 或 [github-stats](https://github.com/jstrieb/github-stats) ，这里我选用 github-stats 因为带有动画，但需要图片需要自行构建。
+The status information of GitHub is displayed using [GitHub Profile Summary Cards](https://github-profile-summary-cards.vercel.app/demo.html) or [github-stats](https://github.com/jstrieb/github-stats) ，Here I choose github-stats because it has animations, but if you need pictures, you need to build them yourself.
 
 ![](https://raw.githubusercontent.com/kuizuo/github-stats/master/generated/overview.svg#gh-light-mode-only)
 
 ![](https://raw.githubusercontent.com/kuizuo/github-stats/master/generated/languages.svg#gh-light-mode-only)
 
-### 友链、导航、项目 页面
+### Friends links, navigation, project pages
 
+These three pages are implemented as custom pages through plugin-content-pages . If you want to know how to implement the page, you can see the custom page
 
-这里你主要关注数据部分，数据都存放至根文件夹 `/data` 下，并使用 ts 用作类型提示。这些数据最终会在这些页面中渲染，你只需要根据符合的类型定义所要展示的数据，访问对应页面就能查看到效果。
+Here you mainly focus on the data part. The data is stored in the root folder `/data` and uses ts as a type hint. The data will eventually be rendered in these pages. You only need to define the data to be displayed according to the type you match, and visit the corresponding page to view the effect.
 
-### 社交链接
+### Social links
 
-只需要在 `data/social.ts` 中修改 social 对象即可。
+Just `data/social.ts` modify the social object in .
 
-内置了以下主流的可供选择的几个社交账号。
+The following mainstream social accounts are built-in for you to choose from.
 
 ```typescript title='social.ts' icon='logos:typescript-icon'
 export type Social = {
@@ -88,6 +89,6 @@ export type Social = {
 }
 ```
 
-## 其他配置
+## Other configuration
 
-可能还需要配置下 giscus 评论，搜索，站点统计等等，这些会放在[插件](/docs/docusaurus-plugin)中细讲。
+You may also need to configure giscus comments, search, site statistics, etc. These will be discussed in detail in [the plugin](/docs/docusaurus-plugin)。
