@@ -7,7 +7,6 @@ tags: [mytag1, mytag2]
 keywords: [mykeywords1, mykeywords2]
 description: mydescription
 image: https://img.kuizuo.cn/202312270109542.png
-sticky: 999
 draft: false # В жизни неизбежно будут какие-то неудачи.
 ---
 
