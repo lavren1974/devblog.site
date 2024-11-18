@@ -4,20 +4,20 @@ import { themes } from 'prism-react-renderer'
 import social from './data/social'
 import type { GiscusConfig } from './src/components/Comment'
 
-const beian = '闽ICP备2020017848号-2'
-const beian1 = '闽公网安备35021102000847号'
+const beian = '1'
+const beian1 = '2'
 
 const config: Config = {
-  title: '愧怍',
-  url: 'https://kuizuo.cn',
+  title: 'devblog.site',
+  url: 'https://devblog.site',
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'kuizuo',
   projectName: 'blog',
   customFields: {
-    bio: '道阻且长，行则将至',
+    bio: 'Дорога длинная и трудная, но путешествие вот-вот начнется',
     description:
-      '是一个由愧怍创建的个人博客，主要分享编程开发知识和项目，该网站基于 React 驱动的静态网站生成器 Docusaurus 构建。',
+      'Веб-сайт создан на основе Docusaurus, генератора статических веб-сайтов на основе React.',
   },
   themeConfig: {
     // announcementBar: {
@@ -28,7 +28,7 @@ const config: Config = {
     metadata: [
       {
         name: 'author',
-        content: '愧怍',
+        content: 'lavren1974',
       },
       {
         name: 'keywords',
@@ -36,7 +36,7 @@ const config: Config = {
       },
       {
         name: 'keywords',
-        content: '编程爱好者, Web开发者, 写过爬虫, 学过逆向, 主攻ts全栈',
+        content: 'веб-разработчик, разработчик',
       },
     ],
     docs: {
@@ -46,23 +46,23 @@ const config: Config = {
     },
     navbar: {
       logo: {
-        alt: '愧怍',
+        alt: 'logo',
         src: 'img/logo.webp',
         srcDark: 'img/logo.webp',
       },
       hideOnScroll: true,
       items: [
-        { label: '博客', position: 'right', to: 'blog' },
-        { label: '项目', position: 'right', to: 'project' },
-        { label: '友链', position: 'right', to: 'friends' },
-        { label: '关于', position: 'right', to: 'about' },
+        { label: 'blog', position: 'right', to: 'blog' },
+        { label: 'project', position: 'right', to: 'project' },
+        { label: 'friends', position: 'right', to: 'friends' },
+        { label: 'about', position: 'right', to: 'about' },
         {
-          label: '更多',
+          label: 'More',
           position: 'right',
           items: [
-            { label: '归档', to: 'blog/archive' },
-            { label: '笔记', to: 'docs/skill' },
-            { label: '工具推荐', to: 'docs/tools' },
+            { label: 'archive', to: 'blog/archive' },
+            { label: 'skill', to: 'docs/skill' },
+            { label: 'tools', to: 'docs/tools' },
           ],
         },
         // {
@@ -75,39 +75,39 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: '学习',
+          title: 'study',
           items: [
-            { label: '博客', to: 'blog' },
-            { label: '归档', to: 'blog/archive' },
-            { label: '技术笔记', to: 'docs/skill' },
-            { label: '实战项目', to: 'project' },
-            { label: '前端示例', to: 'https://example.kuizuo.cn' },
+            { label: 'blog', to: 'blog' },
+            { label: 'archive', to: 'blog/archive' },
+            { label: 'skill', to: 'docs/skill' },
+            { label: 'project', to: 'project' },
+            { label: 'example', to: 'https://example.kuizuo.cn' },
           ],
         },
         {
-          title: '社交媒体',
+          title: 'Social Media',
           items: [
-            { label: '关于我', to: '/about' },
+            { label: 'About Me', to: '/about' },
             { label: 'GitHub', href: social.github.href },
             { label: 'Twitter', href: social.x.href },
-            { label: '掘金', href: social.juejin.href },
+            { label: 'Nuggets', href: social.juejin.href },
             { label: 'Discord', href: social.discord.href },
           ],
         },
         {
-          title: '网站',
+          title: 'website',
           items: [
-            { label: 'js反混淆', to: 'https://js-deobfuscator.kuizuo.cn' },
-            { label: 'cyberChef', to: 'https://gchq.github.io/CyberChef' },
-            { label: 'api服务', to: 'https://api.kuizuo.cn' },
-            { label: '便民服务', to: 'https://service.kuizuo.cn' },
-            { label: '站点监控', to: 'https://uptime.kuizuo.cn' },
+            { label: 'site 1', to: 'https://js-deobfuscator.kuizuo.cn' },
+            { label: 'site 2', to: 'https://gchq.github.io/CyberChef' },
+            { label: 'site 3', to: 'https://api.kuizuo.cn' },
+            { label: 'site 4', to: 'https://service.kuizuo.cn' },
+            { label: 'site 5', to: 'https://uptime.kuizuo.cn' },
           ],
         },
         {
-          title: '更多',
+          title: 'more',
           items: [
-            { label: '友链', position: 'right', to: 'friends' },
+            { label: 'Friends links', position: 'right', to: 'friends' },
             {
               html: `
                 <a href="https://docusaurus.io" target="_blank" rel="noreferrer noopener">
@@ -123,7 +123,7 @@ const config: Config = {
         <p style="display: inline-flex; align-items: center;"><img style="height:20px;margin-right: 0.5rem;" src="/img/police.png" alt="police" height="20"/><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${
           beian1.match(/\d+/)?.[0]
         }" >${beian1}</a></p>
-        <p>Copyright © 2020 - ${new Date().getFullYear()} kuizuo. | Built with Docusaurus.</p>
+        <p>Copyright © ${new Date().getFullYear()} devblog.site. | Built with Docusaurus.</p>
         `,
     },
     algolia: {
@@ -222,18 +222,18 @@ const config: Config = {
         editUrl: ({ locale, blogDirPath, blogPath, permalink }) =>
           `https://github.com/kuizuo/blog/edit/main/${blogDirPath}/${blogPath}`,
         editLocalizedFiles: false,
-        blogDescription: '代码人生：编织技术与生活的博客之旅',
+        blogDescription: 'Code Life: блог-путешествие по плетению технологий и жизни',
         blogSidebarCount: 10,
-        blogSidebarTitle: '博文',
+        blogSidebarTitle: 'blog',
         postsPerPage: 12,
         showReadingTime: true,
         readingTime: ({ content, frontMatter, defaultReadingTime }) =>
           defaultReadingTime({ content, options: { wordsPerMinute: 300 } }),
         feedOptions: {
           type: 'all',
-          title: '愧怍',
+          title: 'devblog',
           description: 'feedId:41215011978385457+userId:41840354283324416',
-          copyright: `Copyright © ${new Date().getFullYear()} 愧怍 Built with Docusaurus.<p><a href="http://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
+          copyright: `Copyright © ${new Date().getFullYear()} devblog Built with Docusaurus.<p><a href="http://beian.miit.gov.cn/" class="footer_lin">${beian}</a></p>`,
         },
       },
     ],
@@ -287,7 +287,7 @@ Love what you do and do what you love.
       tagName: 'meta',
       attributes: {
         name: 'description',
-        content: '愧怍的个人博客',
+        content: 'My personal blog',
       },
     },
   ],
@@ -297,8 +297,8 @@ Love what you do and do what you love.
     'https://cdn.jsdelivr.net/npm/misans@4.0.0/lib/Normal/MiSans-Semibold.min.css',
   ],
   i18n: {
-    defaultLocale: 'zh-CN',
-    locales: ['zh-CN'],
+    defaultLocale: 'ru',
+    locales: ['ru','en'],
   },
   onBrokenLinks: 'warn',
 }
