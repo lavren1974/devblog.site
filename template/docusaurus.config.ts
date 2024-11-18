@@ -62,7 +62,7 @@ const config: Config = {
           items: [
             { label: 'archive', to: 'blog/archive' },
             { label: 'skill', to: 'docs/skill' },
-            { label: 'tools', to: 'docs/tools' },
+            { label: 'basics', to: 'docs/basics' },
           ],
         },
         // {

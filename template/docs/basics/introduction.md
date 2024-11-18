@@ -1,6 +1,6 @@
 ---
 id: introduction
-slug: /tools
+slug: /basics
 title: introduction
 ---
 

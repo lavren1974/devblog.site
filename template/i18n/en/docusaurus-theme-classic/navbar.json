@@ -8,7 +8,7 @@
     "description": "Navbar item with label 博客"
   },
   "item.label.工具": {
-    "message": "Tools",
+    "message": "basics",
     "description": "Navbar item with label 工具"
   },
   "item.label.导航": {
@@ -44,7 +44,7 @@
     "description": "Navbar item with label 笔记"
   },
   "item.label.工具推荐": {
-    "message": "Recommended Tools",
+    "message": "Recommended basics",
     "description": "Navbar item with label 工具推荐"
   },
   "item.label.前端示例": {

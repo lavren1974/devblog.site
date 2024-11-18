@@ -117,9 +117,14 @@ const sidebars: SidebarsConfig = {
       ],
     },
   ],
-  tools: [
-    'tools/introduction',
-    'tools/idea-config',
+  basics: [
+    'basics/introduction',
+    'basics/create-a-page',
+    'basics/create-a-document',
+    'basics/create-a-blog-post',
+    'basics/markdown-features',
+    'basics/deploy-your-site',
+    'basics/congratulations',
   ],
 }
 
